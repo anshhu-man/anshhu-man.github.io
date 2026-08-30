@@ -13,38 +13,15 @@ const contentHighlights: Array<{ phrase: string; kind: HighlightKind }> = [
   { phrase: '25%', kind: 'metric' },
   { phrase: '27%', kind: 'metric' },
   { phrase: '0→1', kind: 'metric' },
-  { phrase: 'Python, LangChain, OpenAI API, and Confluence APIs', kind: 'keyword' },
-  { phrase: 'Python, LangChain, Pinecone, OpenAI API, and DeepEval', kind: 'keyword' },
-  { phrase: 'Python, Bash, OCI SDKs, and REST APIs', kind: 'keyword' },
-  { phrase: 'Kotlin, Jetpack Compose, and Firebase', kind: 'keyword' },
   { phrase: 'CLOS, JFAB, QFAB, and Top-of-Rack fabrics', kind: 'keyword' },
-  { phrase: 'sourced facts, inferences, suggestions, conflicts, and unknowns', kind: 'keyword' },
   { phrase: 'Kotlin-based AI meal-planning application', kind: 'keyword' },
-  { phrase: 'multi-agent DeFi proof of concept', kind: 'keyword' },
-  { phrase: 'runbook-grounded GenAI assistant', kind: 'keyword' },
   { phrase: 'OCI/DRCC onboarding copilot', kind: 'keyword' },
-  { phrase: 'cloud-network infrastructure', kind: 'keyword' },
   { phrase: 'agent-evaluation environment', kind: 'keyword' },
-  { phrase: 'Firebase-backed user flows', kind: 'keyword' },
-  { phrase: 'graduated task graders', kind: 'keyword' },
-  { phrase: 'real-time Pyth price feeds', kind: 'keyword' },
   { phrase: 'AI-native social media app', kind: 'keyword' },
-  { phrase: 'complete food-ordering flow', kind: 'keyword' },
-  { phrase: 'offline-state handling', kind: 'keyword' },
   { phrase: 'RAG knowledge assistant', kind: 'keyword' },
-  { phrase: 'grounded AI tools', kind: 'keyword' },
-  { phrase: 'community messaging', kind: 'keyword' },
-  { phrase: 'short-form video', kind: 'keyword' },
-  { phrase: 'global discovery', kind: 'keyword' },
   { phrase: 'VNIC provisioning', kind: 'keyword' },
   { phrase: 'privacy threat model', kind: 'keyword' },
-  { phrase: 'trust boundaries', kind: 'keyword' },
-  { phrase: 'source provenance', kind: 'keyword' },
   { phrase: 'AI orchestration', kind: 'keyword' },
-  { phrase: '3D interactions', kind: 'keyword' },
-  { phrase: 'OpenStreetMap', kind: 'keyword' },
-  { phrase: 'SMS alerts', kind: 'keyword' },
-  { phrase: 'GPS speed', kind: 'keyword' },
 ];
 
 const highlightLookup = new Map(contentHighlights.map((highlight) => [highlight.phrase, highlight.kind]));
@@ -76,11 +53,11 @@ const experience = [
     role: 'Software Development Engineer · Network Layer',
     location: 'Bengaluru, India',
     summary:
-      'Building grounded AI tools, backend automation, and production software while coordinating rollout readiness for high-stakes cloud-network infrastructure.',
+      'Build AI-assisted tooling, backend automation, and rollout systems for OCI network infrastructure.',
     details: [
       'Built an OCI/DRCC onboarding copilot—a runbook-grounded GenAI assistant using Python, LangChain, OpenAI API, and Confluence APIs—cutting common setup response time from about 3 hours to under 15 minutes.',
       'Reduced onboarding time by 40% and documentation errors by 25% through the assistant.',
-      'Drive rollout readiness across CLOS, JFAB, QFAB, and Top-of-Rack fabrics through dependency tracking, validation gates, rollback plans, game-day checklists, and stakeholder coordination.',
+      'Own rollout readiness across CLOS, JFAB, QFAB, and Top-of-Rack fabrics through dependency tracking, validation gates, rollback plans, game-day checklists, and stakeholder coordination.',
     ],
   },
   {
@@ -354,10 +331,9 @@ export default function Home() {
           </p>
           <h1>Anshuman Acharya</h1>
           <p className="corporate-intro">
-            I&apos;m Anshuman Acharya—a Software Development Engineer at Oracle
-            Cloud Infrastructure working across applied AI, backend development,
-            and cloud networking. I turn ambiguous workflows into measurable
-            tools, reliable systems, and clear execution plans.
+            Software Development Engineer at Oracle Cloud Infrastructure building
+            applied-AI tools, backend automation, and reliable network rollout
+            systems. I turn ambiguous operational workflows into measurable improvements.
           </p>
           <div className="corporate-actions">
             <a className="primary-button" href="#work">
@@ -379,14 +355,15 @@ export default function Home() {
             <span>At a glance</span>
           </div>
           <p className="summary-statement">
-            Software Development Engineer at Oracle Cloud Infrastructure with
-            experience building grounded LLM applications, developing backend
-            automation, and coordinating network-infrastructure rollouts.
+            Software engineer building applied-AI tools, backend automation, and
+            rollout systems for OCI network infrastructure.
           </p>
           <div className="summary-focus-grid">
-            <div><span>Current role</span><strong>Software Development Engineer, OCI</strong></div>
-            <div><span>Core expertise</span><strong>Applied AI, software development, cloud networking</strong></div>
-            <div><span>Delivery strengths</span><strong>Software development, network automation, release readiness, risk tracking, stakeholder coordination</strong></div>
+            <div><span>Current role</span><strong>Software Development Engineer · OCI Network Layer</strong></div>
+            <div><span>Development</span><strong>Python · Java · TypeScript · SQL · REST APIs</strong></div>
+            <div><span>Networking</span><strong>TCP/IP · VNIC · CLOS/ToR · BGP · OSPF</strong></div>
+            <div><span>Applied AI</span><strong>RAG · LLM evaluation · LangChain · Pinecone</strong></div>
+            <div><span>Delivery strengths</span><strong>Release readiness · risk tracking · stakeholder coordination</strong></div>
             <div><span>Location</span><strong>Bengaluru, India</strong></div>
           </div>
         </aside>
@@ -496,7 +473,7 @@ export default function Home() {
                 <p>{item.company}</p>
               </div>
               <div className="experience-content">
-                <strong><HighlightedText text={item.summary} /></strong>
+                <p className="experience-summary"><HighlightedText text={item.summary} /></p>
                 <ul>{item.details.map((detail) => <li key={detail}><HighlightedText text={detail} /></li>)}</ul>
               </div>
             </article>
@@ -509,7 +486,7 @@ export default function Home() {
           <div className="case-study-section">
             <div className="case-study-heading">
               <p className="section-label">Featured work</p>
-              <h3>Featured Projects</h3>
+              <h2>Featured projects</h2>
             </div>
             <div className="featured-case-study-list">
               {featuredCaseStudies.map((study, index) => (
@@ -519,7 +496,7 @@ export default function Home() {
                   </div>
                   <div className="featured-case-study-content">
                     <p className="project-type">{study.type}</p>
-                    <h4>{study.title}</h4>
+                    <h3>{study.title}</h3>
                     <p className="case-study-subtitle">{study.subtitle}</p>
                     <p className="case-study-description"><HighlightedText text={study.description} /></p>
                     <ul>{study.evidence.map((item) => <li key={item}><HighlightedText text={item} /></li>)}</ul>
