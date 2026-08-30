@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const links = [
   { label: 'LeetCode', href: '#coding' },
@@ -12,6 +12,7 @@ const links = [
 
 export default function MobileNavigation() {
   const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -20,17 +21,24 @@ export default function MobileNavigation() {
       if (event.key === 'Escape') setOpen(false);
     };
 
+    const closeOutside = (event: PointerEvent) => {
+      if (!menuRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+
     window.addEventListener('keydown', closeOnEscape);
-    return () => window.removeEventListener('keydown', closeOnEscape);
+    window.addEventListener('pointerdown', closeOutside);
+    return () => {
+      window.removeEventListener('keydown', closeOnEscape);
+      window.removeEventListener('pointerdown', closeOutside);
+    };
   }, [open]);
 
   return (
-    <div className="corporate-mobile-menu">
+    <div className="corporate-mobile-menu" ref={menuRef}>
       <button
         className="corporate-mobile-menu-button"
         type="button"
         aria-expanded={open}
-        aria-haspopup="true"
         aria-controls="mobile-navigation-panel"
         onClick={() => setOpen((current) => !current)}
       >
