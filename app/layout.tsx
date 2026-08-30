@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
   title: 'Anshuman Acharya — Applied AI, Cloud Infrastructure & Technical Leadership',
   description:
-    'Software Development Engineer at Oracle Cloud Infrastructure building grounded AI tools, cloud automation, and reliable infrastructure systems.',
+    'Software Development Engineer at Oracle Cloud Infrastructure building grounded AI tools, backend software, cloud automation, and network infrastructure systems.',
   authors: [{ name: 'Anshuman Acharya' }],
   creator: 'Anshuman Acharya',
   keywords: [
@@ -28,6 +28,10 @@ export const metadata: Metadata = {
     'RAG',
     'LLM Evaluation',
     'Cloud Infrastructure',
+    'Cloud Networking',
+    'Network Engineering',
+    'BGP',
+    'OSPF',
     'Product Strategy',
     'Technical Leadership',
     'Oracle Cloud Infrastructure',
@@ -36,7 +40,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Anshuman Acharya — Applied AI, Cloud Infrastructure & Technical Leadership',
-    description: 'Software Development Engineer at Oracle Cloud Infrastructure.',
+    description: 'Software Development Engineer working across applied AI, backend systems, and cloud networking at Oracle Cloud Infrastructure.',
     url: '/',
     siteName: 'Anshuman Acharya',
     images: [
@@ -52,7 +56,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Anshuman Acharya — Applied AI, Cloud Infrastructure & Technical Leadership',
-    description: 'Software Development Engineer at Oracle Cloud Infrastructure.',
+    description: 'Software Development Engineer working across applied AI, backend systems, and cloud networking at Oracle Cloud Infrastructure.',
     images: ['/og.png'],
   },
   robots: {

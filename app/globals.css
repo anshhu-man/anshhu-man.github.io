@@ -403,6 +403,43 @@ section[id] {
   font-weight: 700;
 }
 
+.content-highlight {
+  padding: 0 0.12em;
+  border-radius: 3px;
+  color: var(--navy-2);
+  font-weight: 720;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.keyword-highlight {
+  background: linear-gradient(
+    to bottom,
+    transparent 58%,
+    rgba(11, 99, 206, 0.13) 58%
+  );
+  color: var(--ink);
+}
+
+.metric-highlight {
+  border-bottom: 1px solid rgba(11, 99, 206, 0.25);
+  background: var(--blue-light);
+  color: var(--blue);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.96em;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+@media (forced-colors: active) {
+  .content-highlight {
+    background: none;
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+}
+
 /* LeetCode dashboard */
 .corporate-coding {
   padding-bottom: 104px;
