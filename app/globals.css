@@ -486,6 +486,15 @@ section[id] {
     text-decoration: underline;
     text-decoration-thickness: 2px;
   }
+
+  .corporate-hero::before,
+  .corporate-hero::after,
+  .projects-surface::before,
+  .working-style-surface::before,
+  .capabilities-surface::before,
+  .corporate-contact-section::before {
+    display: none;
+  }
 }
 
 /* LeetCode dashboard */
@@ -808,7 +817,36 @@ section[id] {
 
 /* Projects */
 .projects-surface {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
   background: #f0f5fa;
+}
+
+.projects-surface::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -120px;
+  z-index: 0;
+  width: min(720px, 65vw);
+  aspect-ratio: 1;
+  pointer-events: none;
+  background: repeating-radial-gradient(
+    ellipse at 50% 46%,
+    transparent 0 34px,
+    rgba(18, 60, 105, 0.065) 35px,
+    transparent 36px 70px
+  );
+  opacity: 0.9;
+  transform: rotate(-10deg);
+  -webkit-mask-image: radial-gradient(ellipse, #000 0 48%, rgba(0, 0, 0, 0.65) 66%, transparent 83%);
+  mask-image: radial-gradient(ellipse, #000 0 48%, rgba(0, 0, 0, 0.65) 66%, transparent 83%);
+}
+
+.projects-surface > .corporate-section {
+  position: relative;
+  z-index: 1;
 }
 
 .featured-project {
@@ -1132,7 +1170,39 @@ section[id] {
 
 /* Leadership and collaboration */
 .working-style-surface {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
   background: var(--surface);
+}
+
+.working-style-surface::before {
+  content: '';
+  position: absolute;
+  bottom: -240px;
+  left: -180px;
+  z-index: 0;
+  width: 620px;
+  aspect-ratio: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 30% 34%, rgba(42, 115, 199, 0.13) 0 2px, transparent 3px),
+    radial-gradient(circle at 62% 20%, rgba(42, 115, 199, 0.11) 0 2px, transparent 3px),
+    radial-gradient(circle at 76% 56%, rgba(18, 60, 105, 0.12) 0 2px, transparent 3px),
+    repeating-radial-gradient(
+      circle at 34% 70%,
+      transparent 0 42px,
+      rgba(18, 60, 105, 0.055) 43px,
+      transparent 44px 84px
+    );
+  transform: rotate(7deg);
+  -webkit-mask-image: radial-gradient(circle, #000 0 50%, rgba(0, 0, 0, 0.7) 68%, transparent 86%);
+  mask-image: radial-gradient(circle, #000 0 50%, rgba(0, 0, 0, 0.7) 68%, transparent 86%);
+}
+
+.working-style-surface > .corporate-section {
+  position: relative;
+  z-index: 1;
 }
 
 .soft-skills-grid {
@@ -1165,7 +1235,33 @@ section[id] {
 
 /* Capabilities */
 .capabilities-surface {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
   background: #eef3f8;
+}
+
+.capabilities-surface::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 88% 28%, rgba(54, 133, 218, 0.09), transparent 24%),
+    repeating-linear-gradient(
+      128deg,
+      transparent 0 44px,
+      rgba(18, 60, 105, 0.045) 45px,
+      transparent 46px 88px
+    );
+  -webkit-mask-image: linear-gradient(90deg, transparent 0 54%, rgba(0, 0, 0, 0.32) 68%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0 54%, rgba(0, 0, 0, 0.32) 68%, #000 100%);
+}
+
+.capabilities-surface > .corporate-section {
+  position: relative;
+  z-index: 1;
 }
 
 .capability-grid-corporate {
@@ -1277,6 +1373,9 @@ section[id] {
 }
 
 .corporate-contact-section {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
   gap: 80px;
@@ -1284,6 +1383,35 @@ section[id] {
   padding: 84px var(--page-gutter);
   background: linear-gradient(135deg, #edf5fc 0%, #f7faff 100%);
   color: var(--ink);
+}
+
+.corporate-contact-section::before {
+  content: '';
+  position: absolute;
+  right: -100px;
+  bottom: -140px;
+  z-index: 0;
+  width: 480px;
+  aspect-ratio: 1.2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 44%, rgba(20, 104, 201, 0.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 38% 18%, rgba(20, 104, 201, 0.16) 0 2px, transparent 3px),
+    radial-gradient(circle at 61% 34%, rgba(18, 60, 105, 0.17) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 62%, rgba(20, 104, 201, 0.16) 0 2px, transparent 3px),
+    radial-gradient(circle at 48% 78%, rgba(18, 60, 105, 0.15) 0 2px, transparent 3px),
+    linear-gradient(30deg, transparent 49.65%, rgba(18, 60, 105, 0.06) 49.85% 50.15%, transparent 50.35%),
+    linear-gradient(146deg, transparent 49.65%, rgba(18, 60, 105, 0.055) 49.85% 50.15%, transparent 50.35%),
+    linear-gradient(82deg, transparent 49.65%, rgba(18, 60, 105, 0.05) 49.85% 50.15%, transparent 50.35%);
+  opacity: 0.8;
+  transform: rotate(-8deg);
+  -webkit-mask-image: radial-gradient(ellipse, #000 0 46%, rgba(0, 0, 0, 0.65) 66%, transparent 84%);
+  mask-image: radial-gradient(ellipse, #000 0 46%, rgba(0, 0, 0, 0.65) 66%, transparent 84%);
+}
+
+.corporate-contact-section > * {
+  position: relative;
+  z-index: 1;
 }
 
 .corporate-contact-section .section-label {
@@ -1584,6 +1712,34 @@ section[id] {
     opacity: 0.72;
   }
 
+  .projects-surface::before {
+    top: -40px;
+    right: -180px;
+    width: 420px;
+    opacity: 0.45;
+  }
+
+  .working-style-surface::before {
+    right: -180px;
+    bottom: -180px;
+    left: auto;
+    width: 400px;
+    opacity: 0.38;
+  }
+
+  .capabilities-surface::before {
+    opacity: 0.45;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, transparent 90%);
+    mask-image: linear-gradient(to bottom, transparent, #000 30%, transparent 90%);
+  }
+
+  .corporate-contact-section::before {
+    right: -150px;
+    bottom: -120px;
+    width: 340px;
+    opacity: 0.38;
+  }
+
   .corporate-hero h1 {
     font-size: clamp(2.65rem, 10vw, 3.6rem);
   }
@@ -1685,6 +1841,10 @@ section[id] {
   .corporate-hero::before {
     right: -500px;
     opacity: 0.34;
+  }
+
+  .capabilities-surface::before {
+    display: none;
   }
 
   .corporate-actions > a {
