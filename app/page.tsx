@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import MobileNavigation from './components/MobileNavigation';
 
 type HighlightKind = 'keyword' | 'metric';
 
@@ -218,32 +219,26 @@ const profileLinks = [
 
 const capabilities = [
   {
-    number: '01',
     title: 'Applied AI',
     skills: ['Grounded LLMs', 'RAG', 'Evaluation', 'LangChain', 'OpenAI API', 'Pinecone', 'DeepEval'],
   },
   {
-    number: '02',
     title: 'Software development',
     skills: ['Python', 'Java', 'TypeScript', 'SQL', 'REST APIs', 'React', 'FastAPI', 'Docker'],
   },
   {
-    number: '03',
     title: 'Cloud networking',
     skills: ['Network fundamentals', 'TCP/IP', 'OCI', 'VNIC', 'CLOS fabrics', 'Top-of-Rack', 'BGP', 'OSPF'],
   },
   {
-    number: '04',
     title: 'Product execution',
     skills: ['MVP scoping', 'Roadmaps', 'Success metrics', 'Risk registers', 'Release readiness', 'Stakeholder alignment'],
   },
   {
-    number: '05',
     title: 'Mobile',
     skills: ['Kotlin', 'Android', 'Jetpack Compose', 'Firebase', 'Release validation'],
   },
   {
-    number: '06',
     title: 'Leadership',
     skills: ['Technical programs', 'Mentoring', 'Workshops', 'Hackathons', 'Cross-functional delivery'],
   },
@@ -314,13 +309,14 @@ export default function Home() {
         </div>
         <div className="corporate-nav-links">
           <a href="#coding">LeetCode</a>
+          <a href="#experience">Experience</a>
           <a href="#work">Projects</a>
           <a href="#leadership">Leadership</a>
-          <a href="#experience">Experience</a>
           <a className="corporate-contact" href="mailto:anshhuman01@gmail.com">
             Contact
           </a>
         </div>
+        <MobileNavigation />
       </nav>
 
       <section className="corporate-hero" id="top">
@@ -331,9 +327,8 @@ export default function Home() {
           </p>
           <h1>Anshuman Acharya</h1>
           <p className="corporate-intro">
-            Software Development Engineer at Oracle Cloud Infrastructure building
-            applied-AI tools, backend automation, and reliable network rollout
-            systems. I turn ambiguous operational workflows into measurable improvements.
+            Building reliable AI and software for cloud networking—with measurable
+            operational impact.
           </p>
           <div className="corporate-actions">
             <a className="primary-button" href="#work">
@@ -349,24 +344,6 @@ export default function Home() {
             <a href="mailto:anshhuman01@gmail.com">Email</a>
           </div>
         </div>
-
-        <aside className="executive-summary" aria-label="Professional summary">
-          <div className="summary-heading">
-            <span>At a glance</span>
-          </div>
-          <p className="summary-statement">
-            Software engineer building applied-AI tools, backend automation, and
-            rollout systems for OCI network infrastructure.
-          </p>
-          <div className="summary-focus-grid">
-            <div><span>Current role</span><strong>Software Development Engineer · OCI Network Layer</strong></div>
-            <div><span>Development</span><strong>Python · Java · TypeScript · SQL · REST APIs</strong></div>
-            <div><span>Networking</span><strong>TCP/IP · VNIC · CLOS/ToR · BGP · OSPF</strong></div>
-            <div><span>Applied AI</span><strong>RAG · LLM evaluation · LangChain · Pinecone</strong></div>
-            <div><span>Delivery strengths</span><strong>Release readiness · risk tracking · stakeholder coordination</strong></div>
-            <div><span>Location</span><strong>Bengaluru, India</strong></div>
-          </div>
-        </aside>
       </section>
 
       <section className="corporate-section education-corporate" id="education">
@@ -584,19 +561,16 @@ export default function Home() {
 
         <div className="leadership-grid-corporate">
           <article>
-            <span>01</span>
             <h3>Applied AI systems</h3>
             <p>Grounded assistants, RAG pipelines, evaluation, evidence integrity, explicit failure states, and human-readable trust boundaries.</p>
             <ul><li>Runbook-grounded OCI assistant</li><li>Nexus retrieval evaluation</li><li>PaperWork responsible-AI contracts</li></ul>
           </article>
           <article>
-            <span>02</span>
             <h3>Product execution</h3>
             <p>MVP boundaries, user journeys, release gates, roadmaps, risk registers, stakeholder updates, and behavior-linked success metrics.</p>
             <ul><li>40% lower onboarding time</li><li>25% fewer documentation errors</li><li>0→1 open-source product prototype</li></ul>
           </article>
           <article>
-            <span>03</span>
             <h3>Technical leadership</h3>
             <p>Rollout planning, dependency tracking, validation gates, mentoring, and programs that make complex work repeatable.</p>
             <ul>
@@ -626,10 +600,10 @@ export default function Home() {
             </p>
           </header>
           <div className="soft-skills-grid">
-            <article><span>01</span><h3>Leadership and program management</h3><p>Directed 15+ programs reaching 5,000+ students while coordinating owners, timelines, partners, communications, execution risks, and retrospectives.</p></article>
-            <article><span>02</span><h3>Communication and stakeholder alignment</h3><p>Translate operational pain points into requirements, runbooks, validation gates, risk ownership, and clear stakeholder updates.</p></article>
-            <article><span>03</span><h3>Teamwork and mentoring</h3><p>Partnered with design and QA through release validation; mentored 100+ students and led workshops and contests reaching 1,000+ participants.</p></article>
-            <article><span>04</span><h3>Ownership and problem solving</h3><p>Break ambiguous work into dependencies, safeguards, rollback paths, automation opportunities, and executable next steps.</p></article>
+            <article><h3>Leadership and program management</h3><p>Directed 15+ programs reaching 5,000+ students while coordinating owners, timelines, partners, communications, execution risks, and retrospectives.</p></article>
+            <article><h3>Communication and stakeholder alignment</h3><p>Translate operational pain points into requirements, runbooks, validation gates, risk ownership, and clear stakeholder updates.</p></article>
+            <article><h3>Teamwork and mentoring</h3><p>Partnered with design and QA through release validation; mentored 100+ students and led workshops and contests reaching 1,000+ participants.</p></article>
+            <article><h3>Ownership and problem solving</h3><p>Break ambiguous work into dependencies, safeguards, rollback paths, automation opportunities, and executable next steps.</p></article>
           </div>
         </div>
       </section>
@@ -643,7 +617,6 @@ export default function Home() {
           <div className="capability-grid-corporate">
             {capabilities.map((capability) => (
               <article key={capability.title}>
-                <span>{capability.number}</span>
                 <h3>{capability.title}</h3>
                 <p>{capability.skills.join(' · ')}</p>
               </article>
