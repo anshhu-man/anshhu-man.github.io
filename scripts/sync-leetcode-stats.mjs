@@ -17,10 +17,10 @@ const query = `
           difficulty
           count
         }
-      }
-      languageProblemCount {
-        languageName
-        problemsSolved
+        totalSubmissionNum {
+          difficulty
+          submissions
+        }
       }
     }
     userContestRanking(username: $username) {
@@ -127,6 +127,12 @@ const total = requireNonNegativeInteger(solvedByDifficulty.all, 'total solved co
 const easy = requireNonNegativeInteger(solvedByDifficulty.easy, 'easy solved count');
 const medium = requireNonNegativeInteger(solvedByDifficulty.medium, 'medium solved count');
 const hard = requireNonNegativeInteger(solvedByDifficulty.hard, 'hard solved count');
+const totalSubmissions = requireNonNegativeInteger(
+  matchedUser.submitStatsGlobal.totalSubmissionNum.find(
+    ({ difficulty }) => difficulty === 'All',
+  )?.submissions,
+  'total submission count',
+);
 
 if (total !== easy + medium + hard) {
   throw new Error('Difficulty counts do not add up to the total solved count');
@@ -138,14 +144,18 @@ if (total < previousStats.solved.total) {
   );
 }
 
-const cppSolvedResponse = matchedUser.languageProblemCount.find(
-  ({ languageName }) => languageName === 'C++',
-)?.problemsSolved;
+if (totalSubmissions < previousStats.submissions.total) {
+  throw new Error(
+    `Refusing to replace ${previousStats.submissions.total} submissions with ${totalSubmissions}`,
+  );
+}
+
 const contest = data.userContestRanking;
 
 const nextStats = {
   username: USERNAME,
   solved: { total, easy, medium, hard },
+  submissions: { total: totalSubmissions },
   contest: {
     topPercentage: validNumberOrPrevious(
       contest?.topPercentage,
@@ -164,14 +174,6 @@ const nextStats = {
       true,
     ),
   },
-  languages: {
-    cppSolved: validNumberOrPrevious(
-      cppSolvedResponse,
-      previousStats.languages.cppSolved,
-      'C++ solved count',
-      true,
-    ),
-  },
   profile: {
     ranking: validNumberOrPrevious(
       matchedUser.profile?.ranking,
@@ -183,4 +185,6 @@ const nextStats = {
 };
 
 await writeFile(OUTPUT_PATH, `${JSON.stringify(nextStats, null, 2)}\n`);
-console.log(`LeetCode statistics ready: ${total} problems solved`);
+console.log(
+  `LeetCode statistics ready: ${total} problems solved, ${totalSubmissions} submissions`,
+);

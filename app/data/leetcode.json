@@ -6,13 +6,13 @@
     "medium": 360,
     "hard": 109
   },
+  "submissions": {
+    "total": 916
+  },
   "contest": {
     "topPercentage": 19.8,
     "rating": 1636.326,
     "attended": 12
-  },
-  "languages": {
-    "cppSolved": 652
   },
   "profile": {
     "ranking": 114864

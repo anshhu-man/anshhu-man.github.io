@@ -424,7 +424,7 @@ export default function Home() {
           </div>
 
           <div className="leetcode-supporting-metrics">
-            <div><span>C++ problems solved</span><strong>{wholeNumber.format(leetcodeStats.languages.cppSolved)}</strong></div>
+            <div><span>Total submissions</span><strong>{wholeNumber.format(leetcodeStats.submissions.total)}</strong></div>
             <div><span>Contests attended</span><strong>{wholeNumber.format(leetcodeStats.contest.attended)}</strong></div>
             <div><span>LeetCode profile rank</span><strong>#{wholeNumber.format(leetcodeStats.profile.ranking)}</strong></div>
           </div>
