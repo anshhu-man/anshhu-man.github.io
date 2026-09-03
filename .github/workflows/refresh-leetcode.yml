@@ -1,0 +1,59 @@
+name: Refresh LeetCode statistics
+
+on:
+  schedule:
+    - cron: '17 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: refresh-leetcode-statistics
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Fetch and validate public LeetCode statistics
+        run: node scripts/sync-leetcode-stats.mjs
+
+      - name: Check for updated statistics
+        id: changes
+        shell: bash
+        run: |
+          if git diff --quiet -- app/data/leetcode.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Save updated statistics
+        if: steps.changes.outputs.changed == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/data/leetcode.json
+          git commit -m "chore: refresh LeetCode statistics"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Publish updated dashboard
+        if: steps.changes.outputs.changed == 'true'
+        run: gh workflow run deploy-pages.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}

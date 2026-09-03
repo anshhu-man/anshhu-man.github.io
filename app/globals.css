@@ -624,17 +624,14 @@ section[id] {
 }
 
 .easy-bar {
-  width: 28.1%;
   background: #73a9dc;
 }
 
 .medium-bar {
-  width: 55.1%;
   background: #3277bb;
 }
 
 .hard-bar {
-  width: 16.8%;
   background: var(--navy-2);
 }
 

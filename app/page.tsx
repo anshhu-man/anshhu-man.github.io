@@ -1,5 +1,14 @@
 import Image from 'next/image';
 import MobileNavigation from './components/MobileNavigation';
+import leetcodeStats from './data/leetcode.json';
+
+const wholeNumber = new Intl.NumberFormat('en-US');
+const oneDecimal = new Intl.NumberFormat('en-US', {
+  maximumFractionDigits: 1,
+});
+
+const solvedShare = (count: number) =>
+  `${(count / leetcodeStats.solved.total) * 100}%`;
 
 type HighlightKind = 'keyword' | 'metric';
 
@@ -374,13 +383,13 @@ export default function Home() {
         <div className="leetcode-dashboard">
           <a
             className="leetcode-dashboard-heading"
-            href="https://leetcode.com/u/anshhu_man/"
+            href={`https://leetcode.com/u/${leetcodeStats.username}/`}
             target="_blank"
             rel="noreferrer"
           >
             <span>
               <strong>LeetCode</strong>
-              <small>@anshhu_man</small>
+              <small>@{leetcodeStats.username} · Updated daily</small>
             </span>
             <span>View public profile ↗</span>
           </a>
@@ -389,30 +398,35 @@ export default function Home() {
             <div className="solved-summary">
               <div className="solved-total">
                 <span className="metric-label">Problems solved</span>
-                <strong>651</strong>
+                <strong>{wholeNumber.format(leetcodeStats.solved.total)}</strong>
               </div>
               <div className="difficulty-block">
                 <span className="metric-label">Difficulty distribution</span>
-                <div className="difficulty-summary" aria-label="183 Easy, 359 Medium, and 109 Hard problems solved">
-                  <div><span>Easy</span><strong>183</strong></div>
-                  <div><span>Medium</span><strong>359</strong></div>
-                  <div className="hard-metric"><span>Hard</span><strong>109</strong></div>
+                <div
+                  className="difficulty-summary"
+                  aria-label={`${leetcodeStats.solved.easy} Easy, ${leetcodeStats.solved.medium} Medium, and ${leetcodeStats.solved.hard} Hard problems solved`}
+                >
+                  <div><span>Easy</span><strong>{wholeNumber.format(leetcodeStats.solved.easy)}</strong></div>
+                  <div><span>Medium</span><strong>{wholeNumber.format(leetcodeStats.solved.medium)}</strong></div>
+                  <div className="hard-metric"><span>Hard</span><strong>{wholeNumber.format(leetcodeStats.solved.hard)}</strong></div>
                 </div>
                 <div className="difficulty-bar" aria-hidden="true">
-                  <span className="easy-bar" /><span className="medium-bar" /><span className="hard-bar" />
+                  <span className="easy-bar" style={{ width: solvedShare(leetcodeStats.solved.easy) }} />
+                  <span className="medium-bar" style={{ width: solvedShare(leetcodeStats.solved.medium) }} />
+                  <span className="hard-bar" style={{ width: solvedShare(leetcodeStats.solved.hard) }} />
                 </div>
               </div>
             </div>
             <div className="contest-kpis">
-              <div><span>Contest standing</span><strong>Top 19.8%</strong></div>
-              <div><span>Contest rating</span><strong>1,636</strong></div>
+              <div><span>Contest standing</span><strong>Top {oneDecimal.format(leetcodeStats.contest.topPercentage)}%</strong></div>
+              <div><span>Contest rating</span><strong>{wholeNumber.format(Math.round(leetcodeStats.contest.rating))}</strong></div>
             </div>
           </div>
 
           <div className="leetcode-supporting-metrics">
-            <div><span>C++ problems solved</span><strong>650</strong></div>
-            <div><span>Contests attended</span><strong>12</strong></div>
-            <div><span>LeetCode profile rank</span><strong>#114,836</strong></div>
+            <div><span>C++ problems solved</span><strong>{wholeNumber.format(leetcodeStats.languages.cppSolved)}</strong></div>
+            <div><span>Contests attended</span><strong>{wholeNumber.format(leetcodeStats.contest.attended)}</strong></div>
+            <div><span>LeetCode profile rank</span><strong>#{wholeNumber.format(leetcodeStats.profile.ranking)}</strong></div>
           </div>
         </div>
 
