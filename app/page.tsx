@@ -428,15 +428,23 @@ export default function Home() {
       </section>
 
       <section className="corporate-section" id="experience">
-        <header className="corporate-section-heading">
-          <p className="section-label">Professional experience</p>
-          <h2>Engineering work with measurable operational impact</h2>
-          <p>
-            Software development, cloud networking, internal AI tooling, and
-            mobile products—each role strengthened a different layer of how I
-            build and lead.
-          </p>
-        </header>
+        <div className="experience-overview">
+          <header className="corporate-section-heading">
+            <p className="section-label">Professional experience</p>
+            <h2>Engineering work with measurable operational impact</h2>
+            <p>
+              Software development, cloud networking, internal AI tooling, and
+              mobile products—each role strengthened a different layer of how I
+              build and lead.
+            </p>
+          </header>
+
+          <div className="experience-total">
+            <strong>2+ years</strong>
+            <span>Total professional experience</span>
+            <small>Cloud · AI · Networking · Mobile</small>
+          </div>
+        </div>
 
         <div className="experience-list">
           {experience.map((item) => (

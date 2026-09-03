@@ -489,6 +489,7 @@ section[id] {
 
   .corporate-hero::before,
   .corporate-hero::after,
+  .experience-total::after,
   .projects-surface::before,
   .working-style-surface::before,
   .capabilities-surface::before,
@@ -726,6 +727,76 @@ section[id] {
 }
 
 /* Experience */
+.experience-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 820px) 250px;
+  align-items: end;
+  justify-content: space-between;
+  gap: 36px;
+  margin-bottom: 42px;
+}
+
+.experience-overview .corporate-section-heading {
+  margin-bottom: 0;
+}
+
+.experience-total {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 24px 26px;
+  border: 1px solid rgba(18, 60, 105, 0.13);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f8fbff 0%, #eaf3fc 100%);
+  box-shadow: 0 12px 30px rgba(31, 48, 71, 0.06);
+}
+
+.experience-total::after {
+  content: '';
+  position: absolute;
+  top: -48px;
+  right: -38px;
+  z-index: -1;
+  width: 130px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(11, 99, 206, 0.1);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 22px rgba(11, 99, 206, 0.035),
+    0 0 0 44px rgba(11, 99, 206, 0.018);
+}
+
+.experience-total strong,
+.experience-total span,
+.experience-total small {
+  display: block;
+}
+
+.experience-total strong {
+  color: var(--navy-2);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 560;
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.experience-total span {
+  margin-top: 12px;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.experience-total small {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 620;
+  line-height: 1.55;
+}
+
 .experience-list {
   display: grid;
   gap: 18px;
@@ -1521,6 +1592,11 @@ section[id] {
 }
 
 @media (max-width: 900px) {
+  .experience-overview {
+    grid-template-columns: minmax(0, 1fr) 230px;
+    gap: 24px;
+  }
+
   .corporate-nav-links {
     font-size: 0.78rem;
   }
@@ -1786,6 +1862,16 @@ section[id] {
       'content';
     gap: 12px;
     padding: 26px;
+  }
+
+  .experience-overview {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .experience-total {
+    padding: 22px 24px;
   }
 
   .project-card,
