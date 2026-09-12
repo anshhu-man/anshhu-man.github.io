@@ -1,13 +1,13 @@
 {
   "username": "anshhu_man",
   "solved": {
-    "total": 656,
-    "easy": 185,
+    "total": 657,
+    "easy": 186,
     "medium": 362,
     "hard": 109
   },
   "submissions": {
-    "total": 919
+    "total": 920
   },
   "contest": {
     "topPercentage": 19.86,
@@ -15,6 +15,6 @@
     "attended": 12
   },
   "profile": {
-    "ranking": 114323
+    "ranking": 114000
   }
 }
