@@ -58,10 +58,10 @@ function HighlightedText({ text }: { text: string }) {
 
 const experience = [
   {
-    dates: 'Jul 2024 — Present',
-    company: 'Oracle Cloud Infrastructure',
-    role: 'Software Development Engineer · Network Layer',
-    location: 'Bengaluru, India',
+    dates: 'Jul 2025 — Present',
+    company: 'Oracle · Full-time',
+    role: 'Software Developer',
+    location: 'Bengaluru, Karnataka, India · On-site',
     summary:
       'Build AI-assisted tooling, backend automation, and rollout systems for OCI network infrastructure.',
     details: [
@@ -71,10 +71,10 @@ const experience = [
     ],
   },
   {
-    dates: 'May 2024 — Jul 2024',
-    company: 'Oracle Cloud Infrastructure',
-    role: 'Server Tech Intern',
-    location: 'Bengaluru, India',
+    dates: 'May 2024 — Jun 2024',
+    company: 'Oracle · Internship',
+    role: 'Software Development Intern',
+    location: 'Bengaluru, Karnataka, India',
     summary:
       'Automated repeatable cloud-infrastructure deployment work at fleet scale.',
     details: [
@@ -257,8 +257,8 @@ const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Anshuman Acharya',
-  jobTitle: 'Software Development Engineer',
-  worksFor: { '@type': 'Organization', name: 'Oracle Cloud Infrastructure' },
+  jobTitle: 'Software Developer',
+  worksFor: { '@type': 'Organization', name: 'Oracle' },
   alumniOf: {
     '@type': 'CollegeOrUniversity',
     name: 'National Institute of Technology, Rourkela',
@@ -332,7 +332,7 @@ export default function Home() {
         <div className="corporate-hero-copy">
           <p className="corporate-eyebrow">
             <span aria-hidden="true" />
-            Software Development Engineer · Oracle Cloud Infrastructure
+            Software Developer · Oracle
           </p>
           <h1>Anshuman Acharya</h1>
           <p className="corporate-intro">
@@ -454,7 +454,7 @@ export default function Home() {
           </header>
 
           <div className="experience-total">
-            <strong>2+ years</strong>
+            <strong>1.5+ years</strong>
             <span>Total professional experience</span>
             <small>Cloud · AI · Networking · Mobile</small>
           </div>

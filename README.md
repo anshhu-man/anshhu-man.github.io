@@ -1,6 +1,6 @@
 # Anshuman Acharya — Technical Portfolio
 
-Recruiter-facing portfolio for Anshuman Acharya, Software Development Engineer at Oracle Cloud Infrastructure.
+Recruiter-facing portfolio for Anshuman Acharya, Software Developer at Oracle.
 
 **Live site:** [anshhu-man.github.io](https://anshhu-man.github.io/)
 
